@@ -1,0 +1,62 @@
+---
+const regionalHeads = [
+  {
+    name: "Dr. Sarah Jenkins",
+    region: "Northern Region",
+    image: "https://images.pexels.com/photos/3796217/pexels-photo-3796217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    since: "2023"
+  },
+  {
+    name: "Robert Kim",
+    region: "Eastern Region",
+    image: "https://images.pexels.com/photos/5668770/pexels-photo-5668770.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    since: "2021"
+  },
+  {
+    name: "Elena Gonzalez",
+    region: "Central Region",
+    image: "https://images.pexels.com/photos/3796227/pexels-photo-3796227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    since: "2022"
+  },
+  {
+    name: "Michael Okafor",
+    region: "Western Region",
+    image: "https://images.pexels.com/photos/6209350/pexels-photo-6209350.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    since: "2024"
+  },
+  {
+    name: "Priya Sharma",
+    region: "Southern Region",
+    image: "https://images.pexels.com/photos/6000065/pexels-photo-6000065.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    since: "2020"
+  }
+];
+---
+
+<section class="my-16" id="regional-heads">
+  <h2 class="font-poppins text-3xl font-bold text-primary-700 text-center mb-8">Regional Administration</h2>
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+    {regionalHeads.map(head => (
+      <div class="bg-white rounded-xl shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:scale-105">
+        <div class="h-48 relative">
+          <img 
+            src={head.image} 
+            alt={head.name} 
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute top-2 right-2 bg-primary-600 text-white text-xs px-2 py-1 rounded-full">
+            Since {head.since}
+          </div>
+        </div>
+        <div class="p-4 text-center">
+          <h3 class="font-poppins text-lg font-semibold text-primary-700">{head.name}</h3>
+          <p class="text-primary-500">{head.region}</p>
+          <a href={`/regions/${head.region.toLowerCase().replace(" region", "")}`} class="mt-2 inline-block text-sm text-primary-600 hover:text-primary-700">
+            View Region
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

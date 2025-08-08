@@ -1,0 +1,93 @@
+---
+const publicAgencies = [
+  {
+    name: "Environmental Protection Agency",
+    head: "Dr. Lisa Chen",
+    description: "Safeguards the environment through regulation, monitoring, and conservation programs.",
+    image: "https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  },
+  {
+    name: "Transportation Authority",
+    head: "Michael Rodriguez",
+    description: "Manages public transportation systems, roads, and infrastructure planning.",
+    image: "https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  },
+  {
+    name: "Economic Development Board",
+    head: "Sarah Johnson",
+    description: "Promotes business growth, attracts investment, and supports economic initiatives.",
+    image: "https://images.pexels.com/photos/1036808/pexels-photo-1036808.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  },
+  {
+    name: "Education Commission",
+    head: "Prof. David Kim",
+    description: "Oversees educational standards, curriculum development, and school administration.",
+    image: "https://images.pexels.com/photos/256431/pexels-photo-256431.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  },
+  {
+    name: "Public Health Department",
+    head: "Dr. Maria Gonzalez",
+    description: "Manages health services, disease prevention, and healthcare programs.",
+    image: "https://images.pexels.com/photos/263337/pexels-photo-263337.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  },
+  {
+    name: "Housing & Development Agency",
+    head: "Robert Chang",
+    description: "Facilitates housing programs, urban planning, and community development.",
+    image: "https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  }
+];
+---
+
+<section>
+  <h2 class="font-poppins text-3xl font-bold text-primary-700 text-center mb-8">Public Agencies</h2>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+    {publicAgencies.map(agency => (
+      <div class="bg-white rounded-xl shadow-md overflow-hidden h-full flex flex-col hover:shadow-lg transition-shadow duration-300">
+        <div class="h-40 relative">
+          <img 
+            src={agency.image} 
+            alt={agency.name} 
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-primary-900/40 to-transparent flex items-end">
+            <div class="p-4">
+              <h3 class="font-poppins text-xl font-semibold text-white">{agency.name}</h3>
+            </div>
+          </div>
+        </div>
+        
+        <div class="p-5 flex-1 flex flex-col">
+          <div class="mb-3">
+            <span class="text-primary-600 font-medium">Head of Department</span>
+            <p class="text-gray-800">{agency.head}</p>
+          </div>
+          
+          <p class="text-gray-600 flex-1">{agency.description}</p>
+          
+          <div class="mt-4 pt-4 border-t border-gray-100">
+            <a href={`/departments/${agency.name.toLowerCase().replace(/ /g, '-')}`} class="text-primary-600 hover:text-primary-700 inline-flex items-center">
+              View Department
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+  
+  <div class="mt-8 text-center">
+    <a 
+      href="/departments" 
+      class="inline-flex items-center px-5 py-2 bg-primary-600 text-white font-medium rounded-md hover:bg-primary-700 transition-colors duration-300"
+    >
+      View All Departments
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+      </svg>
+    </a>
+  </div>
+</section>

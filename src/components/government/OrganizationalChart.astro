@@ -1,0 +1,101 @@
+---
+const governmentDepartments = [
+  {
+    name: "Office of the Governor",
+    head: "Dr. Amelia Chen",
+    subdivisions: ["Executive Secretariat", "Strategic Planning", "Protocol Office"]
+  },
+  {
+    name: "Finance Department",
+    head: "Richard Torres",
+    subdivisions: ["Budget Office", "Revenue Service", "Provincial Treasury"]
+  },
+  {
+    name: "Infrastructure & Development",
+    head: "Olivia Washington",
+    subdivisions: ["Urban Planning", "Public Works", "Transport Division"]
+  },
+  {
+    name: "Health Services",
+    head: "Dr. Kenji Tanaka",
+    subdivisions: ["Public Hospitals", "Health Programs", "Medical Licensing"]
+  },
+  {
+    name: "Education Department",
+    head: "Prof. Linda Johnson",
+    subdivisions: ["K-12 Division", "Higher Education", "Vocational Training"]
+  },
+  {
+    name: "Public Safety",
+    head: "Chief Samuel Park",
+    subdivisions: ["Police Services", "Emergency Management", "Fire Protection"]
+  }
+];
+---
+
+<div class="my-8">
+  <div class="max-w-5xl mx-auto">
+    <!-- Governor & Deputy Governor -->
+    <div class="flex justify-center mb-8">
+      <div class="text-center bg-primary-700 text-white rounded-lg p-4 w-64 shadow-lg">
+        <h3 class="font-semibold mb-1">Governor</h3>
+        <p>Dr. Amelia Chen</p>
+        <div class="mt-2 border-t border-white/20 pt-2">
+          <h3 class="font-semibold mb-1">Deputy Governor</h3>
+          <p>Marcus Rodriguez</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Connecting Line -->
+    <div class="w-0.5 h-8 bg-gray-300 mx-auto"></div>
+    
+    <!-- Administrative Secretary -->
+    <div class="flex justify-center mb-8">
+      <div class="text-center bg-primary-600 text-white rounded-lg p-3 w-60 shadow-md">
+        <h3 class="font-semibold mb-1">Administrative Secretary</h3>
+        <p>Jennifer Wilson</p>
+      </div>
+    </div>
+    
+    <!-- Connecting Lines to Departments -->
+    <div class="relative h-12 mb-4">
+      <div class="absolute left-1/2 w-0.5 h-6 bg-gray-300 transform -translate-x-1/2 top-0"></div>
+      <div class="absolute left-[10%] right-[10%] h-0.5 bg-gray-300 top-6"></div>
+      <div class="absolute left-[10%] w-0.5 h-6 bg-gray-300 top-6"></div>
+      <div class="absolute left-[30%] w-0.5 h-6 bg-gray-300 top-6"></div>
+      <div class="absolute left-[50%] w-0.5 h-6 bg-gray-300 transform -translate-x-1/2 top-6"></div>
+      <div class="absolute left-[70%] w-0.5 h-6 bg-gray-300 top-6"></div>
+      <div class="absolute right-[10%] w-0.5 h-6 bg-gray-300 top-6"></div>
+    </div>
+    
+    <!-- Departments -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+      {governmentDepartments.map(dept => (
+        <div class="bg-white border border-primary-200 rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow duration-300">
+          <h3 class="font-poppins font-semibold text-primary-700 text-center border-b border-gray-200 pb-2 mb-3">{dept.name}</h3>
+          <p class="text-center text-sm text-primary-600 mb-3">{dept.head}</p>
+          <ul class="text-sm space-y-1">
+            {dept.subdivisions.map(sub => (
+              <li class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-secondary-500 mr-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span class="text-gray-600">{sub}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+  
+  <div class="mt-8 text-center">
+    <a href="/departments" class="text-primary-600 hover:text-primary-700 font-medium inline-flex items-center">
+      View detailed department information
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+      </svg>
+    </a>
+  </div>
+</div>

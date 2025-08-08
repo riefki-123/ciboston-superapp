@@ -1,0 +1,267 @@
+---
+const yearlyData = {
+  labels: ["2020", "2021", "2022", "2023", "2024", "2025"],
+  datasets: [
+    {
+      name: "Digital Services Adoption",
+      data: [32, 45, 58, 71, 83, 92]
+    },
+    {
+      name: "Smart Infrastructure Coverage",
+      data: [15, 28, 40, 52, 68, 80]
+    },
+    {
+      name: "Citizen Satisfaction",
+      data: [65, 70, 76, 82, 87, 92]
+    }
+  ]
+};
+
+const keyStats = [
+  {
+    label: "E-Government Transactions",
+    value: "12.6M",
+    change: "+28%",
+    trend: "up"
+  },
+  {
+    label: "Digital Service Coverage",
+    value: "92%",
+    change: "+9%",
+    trend: "up"
+  },
+  {
+    label: "Average Service Response Time",
+    value: "4.3 hrs",
+    change: "-35%",
+    trend: "down"
+  },
+  {
+    label: "Rural Digital Connectivity",
+    value: "87%",
+    change: "+12%",
+    trend: "up"
+  }
+];
+---
+
+<section class="my-16">
+  <h2 class="font-poppins text-3xl font-bold text-primary-700 text-center mb-8">Progress & Impact</h2>
+  
+  <!-- Key Stats -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+    {keyStats.map(stat => (
+      <div class="bg-white rounded-xl shadow-md p-6">
+        <p class="text-gray-500 text-sm mb-1">{stat.label}</p>
+        <div class="flex items-end gap-2">
+          <div class="text-3xl font-bold text-primary-700">
+            {stat.value}
+          </div>
+          <div class={`text-sm font-medium mb-1 ${stat.trend === 'up' ? 'text-green-600' : 'text-red-600'}`}>
+            {stat.change}
+            {stat.trend === 'up' ? 
+              <span class="inline-block">↑</span> : 
+              <span class="inline-block">↓</span>
+            }
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+  
+  <!-- Chart Section -->
+  <div class="bg-white rounded-xl shadow-md overflow-hidden p-6">
+    <h3 class="font-poppins text-xl font-semibold text-primary-700 mb-6">Digital Transformation Progress</h3>
+    
+    <div id="progress-chart" class="h-80 w-full">
+      <!-- Chart will be rendered here via JavaScript -->
+      <div class="w-full h-full flex items-center justify-center">
+        <div class="text-gray-400">Chart requires JavaScript to display. Please enable JavaScript to view.</div>
+      </div>
+    </div>
+    
+    <div class="mt-6 grid grid-cols-3 gap-4">
+      {yearlyData.datasets.map((dataset, index) => (
+        <div>
+          <div class="flex items-center mb-2">
+            <span class={`w-3 h-3 rounded-full mr-2 ${
+              index === 0 ? 'bg-primary-600' : 
+              index === 1 ? 'bg-secondary-500' : 
+              'bg-green-500'
+            }`}></span>
+            <span class="text-sm text-gray-700 font-medium">{dataset.name}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-500 text-xs">2020: {dataset.data[0]}%</span>
+            <span class="text-primary-700 font-medium text-xs">2025: {dataset.data[5]}%</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+  
+  <!-- Strategic Goals -->
+  <div class="mt-12 bg-gradient-to-r from-primary-600 to-primary-700 rounded-xl text-white p-8">
+    <h3 class="font-poppins text-2xl font-semibold mb-6">Strategic Goals for 2030</h3>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div>
+        <ul class="space-y-4">
+          <li class="flex items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary-400 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>100% digitization of government services</span>
+          </li>
+          <li class="flex items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary-400 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Full smart infrastructure coverage across all urban areas</span>
+          </li>
+          <li class="flex items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary-400 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>95% citizen digital literacy rate across all demographics</span>
+          </li>
+        </ul>
+      </div>
+      
+      <div>
+        <ul class="space-y-4">
+          <li class="flex items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary-400 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>80% of energy from renewable sources</span>
+          </li>
+          <li class="flex items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary-400 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Top 10 global ranking for quality of digital government</span>
+          </li>
+          <li class="flex items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-secondary-400 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>30% reduction in carbon emissions through smart city technologies</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // This is a simplified chart implementation
+    // In a real project, you'd use a library like Chart.js
+    
+    const chartContainer = document.getElementById('progress-chart');
+    if (!chartContainer) return;
+    
+    const data = {
+      labels: ["2020", "2021", "2022", "2023", "2024", "2025"],
+      datasets: [
+        {
+          name: "Digital Services Adoption",
+          color: "#1E3A8A", // primary-600
+          data: [32, 45, 58, 71, 83, 92]
+        },
+        {
+          name: "Smart Infrastructure Coverage",
+          color: "#FACC15", // secondary-500
+          data: [15, 28, 40, 52, 68, 80]
+        },
+        {
+          name: "Citizen Satisfaction",
+          color: "#10B981", // green-500
+          data: [65, 70, 76, 82, 87, 92]
+        }
+      ]
+    };
+    
+    // Simple SVG-based chart - in a real application, use a proper charting library
+    const svgNS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(svgNS, "svg");
+    svg.setAttribute("width", "100%");
+    svg.setAttribute("height", "100%");
+    svg.setAttribute("viewBox", "0 0 600 300");
+    
+    // Create basic grid lines
+    const gridGroup = document.createElementNS(svgNS, "g");
+    for (let i = 0; i <= 100; i += 20) {
+      const y = 300 - (i * 3);
+      const line = document.createElementNS(svgNS, "line");
+      line.setAttribute("x1", "40");
+      line.setAttribute("y1", y.toString());
+      line.setAttribute("x2", "580");
+      line.setAttribute("y2", y.toString());
+      line.setAttribute("stroke", "#f0f0f0");
+      line.setAttribute("stroke-width", "1");
+      gridGroup.appendChild(line);
+      
+      // Add y-axis labels
+      const text = document.createElementNS(svgNS, "text");
+      text.setAttribute("x", "35");
+      text.setAttribute("y", y.toString());
+      text.setAttribute("text-anchor", "end");
+      text.setAttribute("font-size", "10");
+      text.setAttribute("fill", "#6B7280");
+      text.textContent = i + "%";
+      gridGroup.appendChild(text);
+    }
+    svg.appendChild(gridGroup);
+    
+    // Create x-axis labels
+    const xLabelsGroup = document.createElementNS(svgNS, "g");
+    data.labels.forEach((label, index) => {
+      const x = 40 + (index * (540 / (data.labels.length - 1)));
+      const text = document.createElementNS(svgNS, "text");
+      text.setAttribute("x", x.toString());
+      text.setAttribute("y", "290");
+      text.setAttribute("text-anchor", "middle");
+      text.setAttribute("font-size", "10");
+      text.setAttribute("fill", "#6B7280");
+      text.textContent = label;
+      xLabelsGroup.appendChild(text);
+    });
+    svg.appendChild(xLabelsGroup);
+    
+    // Create the datasets
+    data.datasets.forEach(dataset => {
+      const points = dataset.data.map((value, index) => {
+        const x = 40 + (index * (540 / (data.labels.length - 1)));
+        const y = 300 - (value * 3);
+        return `${x},${y}`;
+      }).join(" ");
+      
+      // Create polyline for line chart
+      const polyline = document.createElementNS(svgNS, "polyline");
+      polyline.setAttribute("points", points);
+      polyline.setAttribute("fill", "none");
+      polyline.setAttribute("stroke", dataset.color);
+      polyline.setAttribute("stroke-width", "2");
+      svg.appendChild(polyline);
+      
+      // Create dots for data points
+      dataset.data.forEach((value, index) => {
+        const x = 40 + (index * (540 / (data.labels.length - 1)));
+        const y = 300 - (value * 3);
+        
+        const circle = document.createElementNS(svgNS, "circle");
+        circle.setAttribute("cx", x.toString());
+        circle.setAttribute("cy", y.toString());
+        circle.setAttribute("r", "4");
+        circle.setAttribute("fill", dataset.color);
+        svg.appendChild(circle);
+      });
+    });
+    
+    // Clear and append the chart
+    chartContainer.innerHTML = "";
+    chartContainer.appendChild(svg);
+  });
+</script>

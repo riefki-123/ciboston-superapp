@@ -1,0 +1,136 @@
+---
+const eServices = [
+  {
+    title: "Personal Document Portal",
+    description: "Apply for and renew ID cards, birth certificates, and other personal documents online.",
+    icon: "document-text"
+  },
+  {
+    title: "Business Licensing System",
+    description: "Complete business registration, licensing, and reporting requirements through our online portal.",
+    icon: "briefcase"
+  },
+  {
+    title: "Provincial Tax Filing",
+    description: "File and pay provincial taxes electronically with real-time processing and confirmation.",
+    icon: "cash"
+  },
+  {
+    title: "Healthcare Management",
+    description: "Schedule appointments, access medical records, and manage prescriptions online.",
+    icon: "heart"
+  }
+];
+
+const userSatisfaction = 87; // Percentage
+const paperReduction = 68; // Percentage
+const processingTime = 73; // Percentage
+---
+
+<section class="my-16">
+  <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+    <div class="lg:col-span-2 flex flex-col justify-center">
+      <h2 class="font-poppins text-3xl font-bold text-primary-700 mb-6">E-Government Services Portal</h2>
+      
+      <p class="text-gray-600 mb-6">
+        Our comprehensive digital government platform provides citizens and businesses with 24/7 access to provincial services. The platform eliminates paperwork, reduces processing times, and improves service delivery efficiency.
+      </p>
+      
+      <!-- Metrics -->
+      <div class="grid grid-cols-3 gap-4 mb-6">
+        <div class="text-center p-4 bg-primary-50 rounded-lg">
+          <div class="text-3xl font-bold text-primary-700">{userSatisfaction}%</div>
+          <div class="text-xs text-gray-600">User Satisfaction</div>
+        </div>
+        
+        <div class="text-center p-4 bg-primary-50 rounded-lg">
+          <div class="text-3xl font-bold text-primary-700">{paperReduction}%</div>
+          <div class="text-xs text-gray-600">Paper Reduction</div>
+        </div>
+        
+        <div class="text-center p-4 bg-primary-50 rounded-lg">
+          <div class="text-3xl font-bold text-primary-700">{processingTime}%</div>
+          <div class="text-xs text-gray-600">Faster Processing</div>
+        </div>
+      </div>
+      
+      <a 
+        href="/services/e-government" 
+        class="inline-flex items-center px-6 py-3 bg-primary-600 text-white font-medium rounded-md hover:bg-primary-700 transition-colors duration-300 shadow-md self-start"
+      >
+        Access E-Services
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+    </div>
+    
+    <div class="lg:col-span-3">
+      <div class="bg-white rounded-xl shadow-md overflow-hidden">
+        <div class="p-6 border-b border-gray-100">
+          <h3 class="font-poppins text-xl font-semibold text-primary-700">Popular E-Government Services</h3>
+        </div>
+        
+        <div class="p-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {eServices.map(service => (
+              <div class="flex">
+                <div class="flex-shrink-0 mr-4">
+                  <div class="h-12 w-12 rounded-lg bg-primary-100 flex items-center justify-center text-primary-600">
+                    {service.icon === "document-text" && (
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                    )}
+                    
+                    {service.icon === "briefcase" && (
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    )}
+                    
+                    {service.icon === "cash" && (
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                    )}
+                    
+                    {service.icon === "heart" && (
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                      </svg>
+                    )}
+                  </div>
+                </div>
+                
+                <div>
+                  <h4 class="font-medium text-gray-800 mb-1">{service.title}</h4>
+                  <p class="text-gray-600 text-sm">{service.description}</p>
+                  <a href={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`} class="mt-2 inline-block text-sm text-primary-600 hover:text-primary-700">
+                    Access service →
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-r from-primary-50 to-white p-6 border-t border-gray-100">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="font-medium text-gray-800">Need assistance?</p>
+              <p class="text-sm text-gray-600">Our digital support team is available 24/7</p>
+            </div>
+            
+            <a 
+              href="/help" 
+              class="px-4 py-2 bg-white border border-primary-300 text-primary-600 font-medium rounded-md hover:bg-primary-50 transition-colors duration-200"
+            >
+              Get Help
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,77 @@
+---
+const categories = [
+  { id: "all", name: "All Categories", count: 15 },
+  { id: "administration", name: "Administration", count: 3 },
+  { id: "public-services", name: "Public Services", count: 5 },
+  { id: "economic", name: "Economic", count: 4 },
+  { id: "development", name: "Development", count: 2 },
+  { id: "infrastructure", name: "Infrastructure", count: 1 },
+  { id: "security", name: "Security", count: 5 }
+];
+---
+
+<div>
+  <h3 class="font-medium text-gray-800 mb-3">Filter by Category</h3>
+  
+  <div class="space-y-2">
+    {categories.map(category => (
+      <div class="flex items-center">
+        <input
+          type="radio"
+          name="category"
+          id={`category-${category.id}`}
+          value={category.id}
+          class="h-4 w-4 text-primary-600 focus:ring-primary-500"
+          checked={category.id === 'all'}
+        />
+        <label for={`category-${category.id}`} class="ml-2 text-gray-700 flex-1">
+          {category.name}
+        </label>
+        <span class="text-gray-500 text-sm">{category.count}</span>
+      </div>
+    ))}
+  </div>
+  
+  <div class="border-t border-gray-200 my-6 pt-6">
+    <h3 class="font-medium text-gray-800 mb-3">Quick Links</h3>
+    
+    <div class="space-y-2">
+      <a href="/government" class="flex items-center text-primary-600 hover:text-primary-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+        Government Structure
+      </a>
+      <a href="/officials" class="flex items-center text-primary-600 hover:text-primary-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+        Elected Officials
+      </a>
+      <a href="/contact" class="flex items-center text-primary-600 hover:text-primary-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+        Contact Directory
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const categoryRadios = document.querySelectorAll('input[name="category"]');
+    
+    categoryRadios.forEach(radio => {
+      radio.addEventListener('change', (e) => {
+        const selectedCategory = (e.target as HTMLInputElement).value;
+        
+        // In a real implementation, this would filter departments based on the selected category
+        console.log('Category selected:', selectedCategory);
+        
+        // You would add logic to filter the departments or make an API call
+        // Then update the DOM to show the filtered results
+      });
+    });
+  });
+</script>

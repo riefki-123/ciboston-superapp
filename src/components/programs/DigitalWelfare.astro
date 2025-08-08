@@ -1,0 +1,113 @@
+---
+const welfarePrograms = [
+  {
+    title: "Digital Inclusion Program",
+    description: "Providing internet access, devices, and digital literacy training to underserved communities.",
+    beneficiaries: "25,000+",
+    icon: "users"
+  },
+  {
+    title: "Elderly Tech Support",
+    description: "Specialized technology assistance and simplified digital services for senior citizens.",
+    beneficiaries: "18,750+",
+    icon: "user-group"
+  },
+  {
+    title: "Rural Connectivity Initiative",
+    description: "Extending high-speed internet and digital services to remote rural areas.",
+    beneficiaries: "42,000+",
+    icon: "wifi"
+  },
+  {
+    title: "Student Technology Grant",
+    description: "Providing students from low-income families with computers and internet access for education.",
+    beneficiaries: "35,600+",
+    icon: "academic-cap"
+  }
+];
+---
+
+<section class="my-16">
+  <h2 class="font-poppins text-3xl font-bold text-primary-700 text-center mb-8">Digital Welfare Programs</h2>
+  
+  <p class="text-gray-600 max-w-4xl mx-auto text-center mb-12">
+    Our digital welfare initiatives ensure that technological advancement benefits all citizens, regardless of socioeconomic status, age, or location. These programs aim to bridge the digital divide and promote inclusive growth.
+  </p>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {welfarePrograms.map(program => (
+      <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col md:flex-row hover:shadow-lg transition-shadow duration-300">
+        <div class="bg-primary-600 p-6 md:w-1/3 flex flex-col justify-center items-center text-white">
+          {program.icon === "users" && (
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          )}
+          
+          {program.icon === "user-group" && (
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          )}
+          
+          {program.icon === "wifi" && (
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+            </svg>
+          )}
+          
+          {program.icon === "academic-cap" && (
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M12 14l9-5-9-5-9 5 9 5z" />
+              <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+            </svg>
+          )}
+          
+          <div class="text-center">
+            <div class="text-3xl font-bold">{program.beneficiaries}</div>
+            <div class="text-sm text-white/80">Beneficiaries</div>
+          </div>
+        </div>
+        
+        <div class="p-6 md:w-2/3">
+          <h3 class="font-poppins text-xl font-semibold text-primary-700 mb-3">{program.title}</h3>
+          <p class="text-gray-600 mb-4">{program.description}</p>
+          
+          <a 
+            href={`/programs/${program.title.toLowerCase().replace(/\s+/g, '-')}`} 
+            class="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
+          >
+            Learn more
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+  
+  <div class="mt-10 bg-primary-700 text-white p-8 rounded-xl">
+    <div class="md:flex items-center justify-between">
+      <div class="md:w-2/3">
+        <h3 class="font-poppins text-2xl font-semibold mb-4">Need assistance with digital services?</h3>
+        <p class="text-white/90 mb-6 md:mb-0">
+          Our Digital Support Centers are available throughout the province to help citizens access and navigate government digital services.
+        </p>
+      </div>
+      <div>
+        <a 
+          href="/programs/digital-support" 
+          class="inline-flex items-center px-6 py-3 bg-white text-primary-700 font-medium rounded-md hover:bg-gray-100 transition-colors duration-300 shadow-md"
+        >
+          Find Support Center
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,176 @@
+---
+const regions = [
+  { 
+    id: 'northern', 
+    name: 'Cimanuk', 
+    population: '1.2 Juta',
+    capital: 'Cimanuk Riverside',
+    description: 'Kabupaten Agraris',
+    position: 'top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
+  },
+  { 
+    id: 'eastern', 
+    name: 'Manhattan', 
+    population: '1.5 Juta',
+    capital: 'Mayora Manhattan',
+    description: 'Kota Finansial',
+    position: 'top-1/2 right-8 transform -translate-y-1/2'
+  },
+  { 
+    id: 'central', 
+    name: 'Ciboston', 
+    population: '2.4 Juta',
+    capital: 'Ciboston City',
+    description: 'Jantung Provinsi Ciboston',
+    position: 'top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
+  },
+  { 
+    id: 'western', 
+    name: 'Cicopenhangen', 
+    population: '1.3 million',
+    capital: 'Cicopenhangen City',
+    description: 'Kota Pelabuhan',
+    position: 'top-1/2 left-8 transform -translate-y-1/2'
+  },
+  { 
+    id: 'southern', 
+    name: 'Munjul', 
+    population: '1.1 million',
+    capital: 'Ciruum Cup',
+    description: 'Kota Pendidikan dan Budaya',
+    position: 'bottom-8 left-1/2 transform -translate-x-1/2'
+  }
+];
+---
+
+<section class="my-16">
+  <h2 class="font-poppins text-3xl font-bold text-primary-700 text-center mb-8">Jelajah Provinsi Kami</h2>
+  
+  <div class="relative w-full bg-gray-100 rounded-xl shadow-md overflow-hidden" style="min-height: 400px;">
+    <!-- Interactive Map -->
+    <div id="interactive-map" class="w-full h-[450px] relative overflow-hidden bg-primary-50 rounded-xl">
+      <!-- Map Outline - In a real implementation, this would be an SVG map of the province -->
+      <div class="absolute inset-0 flex items-center justify-center opacity-20">
+        <div class="w-[80%] h-[80%] border-4 border-primary-700 rounded-[40%] relative">
+          <!-- This is a simplified placeholder - in a real app, use an actual SVG map -->
+          <div class="absolute top-0 left-0 w-full h-full border-4 border-primary-700 rounded-[45%] rotate-45"></div>
+        </div>
+      </div>
+      
+      <!-- Region Markers -->
+      {regions.map(region => (
+        <button
+          id={`marker-${region.id}`}
+          class={`absolute ${region.position} w-6 h-6 bg-secondary-500 rounded-full cursor-pointer border-2 border-white shadow-md transform hover:scale-125 transition-transform duration-300 z-10`}
+          data-region={region.id}
+          aria-label={`View ${region.name}`}
+        ></button>
+      ))}
+      
+      <!-- Region Info Panel -->
+      <div id="region-info" class="absolute bottom-4 left-4 right-4 md:left-auto md:right-4 md:w-80 bg-white p-4 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 invisible">
+        <h3 id="region-name" class="font-poppins text-xl font-semibold text-primary-700 mb-2"></h3>
+        <div class="space-y-2 text-sm">
+          <p class="flex items-center">
+            <span class="font-medium text-gray-700 w-20">Kapital:</span> 
+            <span id="region-capital"></span>
+          </p>
+          <p class="flex items-center">
+            <span class="font-medium text-gray-700 w-20">Populasi:</span> 
+            <span id="region-population"></span>
+          </p>
+          <p id="region-description" class="text-gray-600 mt-2"></p>
+          <a id="region-link" href="#" class="inline-block mt-2 text-primary-600 hover:underline">Pelajari →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const regionsData = [
+    { 
+      id: 'northern', 
+      name: 'Cimanuk', 
+      population: '1.2 Juta',
+      capital: 'Cimanuk Riverside',
+      description: 'Kabupaten Agraris',
+      link: '/wilayah/cimanuk'
+    },
+    { 
+      id: 'eastern', 
+      name: 'Manhattan', 
+      population: '1.5 Juta',
+      capital: 'Mayora Manhattan',
+      description: 'Kota Finansial',
+      link: '/wilayah/manhattan'
+    },
+    { 
+      id: 'central', 
+      name: 'Ciboston', 
+      population: '2.4 Juta',
+      capital: 'Ciboston City',
+      description: 'Ibu kota provinsi dan pusat ekonomi Ciboston',
+      link: '/wilayah/IKPCiboston'
+    },
+    { 
+      id: 'western', 
+      name: 'Cicopenhangen', 
+      population: '1.3 Juta',
+      capital: 'Cicopenhangen City',
+      description: 'Kota Pelabuhan dan Industri',
+      link: '/wilayah/cicopehangen'
+    },
+    { 
+      id: 'southern', 
+      name: 'Munjul', 
+      population: '1.1 million',
+      capital: 'Munjul Downtown',
+      description: 'Kota Budaya dan Pendidikan.',
+      link: '/wilayah/munjul'
+    }
+  ];
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const regionInfo = document.getElementById('region-info');
+    const regionNameEl = document.getElementById('region-name');
+    const regionCapitalEl = document.getElementById('region-capital');
+    const regionPopulationEl = document.getElementById('region-population');
+    const regionDescriptionEl = document.getElementById('region-description');
+    const regionLinkEl = document.getElementById('region-link');
+    
+    regionsData.forEach(region => {
+      const markerEl = document.getElementById(`marker-${region.id}`);
+      
+      markerEl?.addEventListener('click', () => {
+        // Update info panel
+        if (regionNameEl) regionNameEl.textContent = region.name;
+        if (regionCapitalEl) regionCapitalEl.textContent = region.capital;
+        if (regionPopulationEl) regionPopulationEl.textContent = region.population;
+        if (regionDescriptionEl) regionDescriptionEl.textContent = region.description;
+        if (regionLinkEl) {
+          regionLinkEl.setAttribute('href', region.link);
+          regionLinkEl.textContent = `Explore ${region.name} →`;
+        }
+        
+        // Show info panel
+        if (regionInfo) {
+          regionInfo.classList.remove('invisible', 'opacity-0');
+          regionInfo.classList.add('opacity-100');
+        }
+      });
+    });
+    
+    // Close info panel when clicking outside
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      const isMarker = target.closest('[id^="marker-"]');
+      const isInfoPanel = target.closest('#region-info');
+      
+      if (!isMarker && !isInfoPanel && regionInfo?.classList.contains('opacity-100')) {
+        regionInfo.classList.remove('opacity-100');
+        regionInfo.classList.add('opacity-0', 'invisible');
+      }
+    });
+  });
+</script>

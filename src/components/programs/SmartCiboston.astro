@@ -1,0 +1,103 @@
+---
+const smartCityFeatures = [
+  {
+    title: "Intelligent Traffic Management",
+    description: "AI-powered traffic signals that adapt to real-time conditions, reducing congestion by up to 30%",
+    icon: "traffic-light"
+  },
+  {
+    title: "Smart Grid Energy",
+    description: "Advanced energy management system that optimizes electricity distribution and integrates renewable sources",
+    icon: "lightning-bolt"
+  },
+  {
+    title: "Public Safety Network",
+    description: "Connected camera systems and emergency response coordination for faster incident management",
+    icon: "shield-check"
+  },
+  {
+    title: "Environmental Monitoring",
+    description: "IoT sensors throughout the province monitoring air quality, water levels, and pollution",
+    icon: "cloud"
+  },
+  {
+    title: "Smart Waste Management",
+    description: "Automated collection systems and fill-level sensors for efficient waste management",
+    icon: "trash"
+  },
+  {
+    title: "Public Wi-Fi Network",
+    description: "Free high-speed internet access in all public spaces and government buildings",
+    icon: "wifi"
+  }
+];
+---
+
+<section class="my-16 py-12 px-6 md:px-10 bg-primary-50 rounded-2xl">
+  <h2 class="font-poppins text-3xl font-bold text-primary-700 text-center mb-12">Smart Ciboston Initiative</h2>
+  
+  <div class="max-w-4xl mx-auto mb-12">
+    <p class="text-center text-gray-700 text-lg">
+      Our flagship Smart City program integrates cutting-edge technology with urban infrastructure to create a more efficient, sustainable, and livable environment for all citizens. Through data-driven governance and intelligent systems, we're building the province of tomorrow, today.
+    </p>
+  </div>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {smartCityFeatures.map(feature => (
+      <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+        <div class="mb-4 text-primary-600">
+          {feature.icon === "traffic-light" && (
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+            </svg>
+          )}
+          
+          {feature.icon === "lightning-bolt" && (
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          )}
+          
+          {feature.icon === "shield-check" && (
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          )}
+          
+          {feature.icon === "cloud" && (
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+            </svg>
+          )}
+          
+          {feature.icon === "trash" && (
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+          )}
+          
+          {feature.icon === "wifi" && (
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+            </svg>
+          )}
+        </div>
+        
+        <h3 class="font-poppins text-lg font-semibold text-primary-700 mb-2">{feature.title}</h3>
+        <p class="text-gray-600">{feature.description}</p>
+      </div>
+    ))}
+  </div>
+  
+  <div class="mt-12 text-center">
+    <a 
+      href="/programs/smart-ciboston" 
+      class="inline-flex items-center px-6 py-3 bg-primary-600 text-white font-medium rounded-md hover:bg-primary-700 transition-colors duration-300 shadow-md"
+    >
+      Explore Smart City Projects
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+      </svg>
+    </a>
+  </div>
+</section>

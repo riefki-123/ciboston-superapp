@@ -1,0 +1,77 @@
+---
+const leaders = [
+  {
+    name: "Dr. Amelia Chen",
+    title: "Governor",
+    image: "https://images.pexels.com/photos/5792641/pexels-photo-5792641.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    bio: "Dr. Chen has served as Governor since 2022. With a background in public administration and economics, she has led Ciboston through significant digital transformation and economic growth. Prior to becoming Governor, she served as the Minister of Economic Development for 6 years.",
+    achievements: [
+      "Implemented the Smart Province Initiative",
+      "Expanded healthcare access to rural communities",
+      "Reduced unemployment by 15% through business development programs"
+    ]
+  },
+  {
+    name: "Marcus Rodriguez",
+    title: "Deputy Governor",
+    image: "https://images.pexels.com/photos/5490276/pexels-photo-5490276.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    bio: "Deputy Governor Rodriguez brings over 20 years of public service experience, specializing in infrastructure development and public safety. He oversees the day-to-day operations of provincial departments and coordinates with regional administrators.",
+    achievements: [
+      "Led the Provincial Resilience Plan",
+      "Modernized the emergency response systems",
+      "Established the Ciboston Innovation Hub"
+    ]
+  }
+];
+---
+
+<section class="my-16" id="leadership">
+  <h2 class="font-poppins text-3xl font-bold text-primary-700 text-center mb-8">Provincial Leadership</h2>
+  
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    {leaders.map(leader => (
+      <div class="bg-white rounded-xl shadow-md overflow-hidden">
+        <div class="md:flex">
+          <div class="md:w-1/3">
+            <div class="h-72 md:h-full relative">
+              <img 
+                src={leader.image} 
+                alt={leader.name} 
+                class="w-full h-full object-cover object-center"
+              />
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary-900 to-transparent p-4 md:hidden">
+                <h3 class="font-poppins text-xl font-semibold text-white">{leader.name}</h3>
+                <p class="text-secondary-300">{leader.title}</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="p-6 md:w-2/3">
+            <div class="hidden md:block mb-4">
+              <h3 class="font-poppins text-2xl font-semibold text-primary-700">{leader.name}</h3>
+              <p class="text-lg text-primary-500 font-medium">{leader.title}</p>
+            </div>
+            
+            <div class="mb-4">
+              <p class="text-gray-700">{leader.bio}</p>
+            </div>
+            
+            <div>
+              <h4 class="font-medium text-gray-900 mb-2">Key Achievements:</h4>
+              <ul class="space-y-2">
+                {leader.achievements.map(achievement => (
+                  <li class="flex items-start">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary-500 mr-2 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-gray-600">{achievement}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

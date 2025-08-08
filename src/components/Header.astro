@@ -1,0 +1,94 @@
+---
+import NavLink from './NavLink.astro';
+import LanguageSelector from './LanguageSelector.astro';
+import SearchBar from './SearchBar.astro';
+---
+
+<header class="bg-white shadow-sm sticky top-0 z-50 transition-all duration-300">
+  <div class="container mx-auto">
+    <div class="flex items-center justify-between py-4 px-4 md:px-6 lg:px-8">
+      <!-- Logo -->
+      <a href="/" class="flex items-center space-x-2" aria-label="Ciboston Provincial Government">
+        <div class="flex items-center">
+          <div class="flex h-10 w-10 bg-primary-600 items-center justify-center">
+            <span class="font-poppins font-bold text-white text-sm">C</span>
+          </div>
+          <div class="flex h-10 w-10 bg-secondary-600 items-center justify-center">
+            <span class="font-poppins font-bold text-primary-800 text-sm">P</span>
+          </div>
+          <div class="flex h-10 w-10 bg-primary-600 items-center justify-center">
+            <span class="font-poppins font-bold text-white text-sm">G</span>
+          </div>
+        </div>
+        <span class="hidden md:inline-block font-poppins text-lg font-semibold text-primary-700">
+          Ciboston Provincial Government
+        </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center space-x-8">
+        <NavLink href="/" label="Home" />
+        <NavLink href="/about" label="Tentang Ciboston" />
+        <NavLink href="/government" label="Struktur Pemda" />
+        <NavLink href="/departments" label="Dinas & Instansi" />
+        <NavLink href="/programs" label="Program" />
+        <NavLink href="/contact" label="Kontak" />
+      </nav>
+
+      <!-- Right Side Tools -->
+      <div class="flex items-center gap-4">
+        <LanguageSelector />
+        <SearchBar />
+        
+        <!-- Mobile Menu Button -->
+        <button 
+          id="mobile-menu-button" 
+          class="lg:hidden flex items-center p-2 rounded-md text-primary-700"
+          aria-label="Toggle navigation menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-200 py-4 px-4 space-y-3">
+      <NavLink href="/" label="Home" mobile={true} />
+      <NavLink href="/about" label="Tentang Ciboston" mobile={true} />
+      <NavLink href="/government" label="Struktur Pemda" mobile={true} />
+      <NavLink href="/departments" label="Dinas & Instansi" mobile={true} />
+      <NavLink href="/programs" label="Program" mobile={true} />
+      <NavLink href="/contact" label="Kontak" mobile={true} />
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuButton?.addEventListener('click', () => {
+      mobileMenu?.classList.toggle('hidden');
+    });
+    
+    // Scroll behavior for header
+    const header = document.querySelector('header');
+    let lastScrollTop = 0;
+    
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (scrollTop > 100) {
+        header?.classList.add('shadow-md');
+      } else {
+        header?.classList.remove('shadow-md');
+      }
+      
+      lastScrollTop = scrollTop;
+    });
+  });
+</script>

@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import DepartmentGrid from '../components/departments/DepartmentGrid.astro';
+import DepartmentSearch from '../components/departments/DepartmentSearch.astro';
+import DepartmentFilter from '../components/departments/DepartmentFilter.astro';
+
+const title = "Departments & Agencies";
+const description = "Explore the departments and agencies of the Ciboston Provincial Government. Find information about their services, leadership, and contact details.";
+---
+
+<Layout 
+  title={title}
+  description={description}
+>
+  <PageHeader 
+    title="Departments & Agencies"
+    subtitle="Exploring our government's organizational structure and services"
+    backgroundImage="https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  />
+  
+  <div class="container mx-auto px-4 py-12">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar for filters -->
+      <aside class="lg:w-1/4">
+        <div class="bg-white rounded-xl shadow-sm p-6 sticky top-24">
+          <DepartmentSearch />
+          <div class="mt-6">
+            <DepartmentFilter />
+          </div>
+        </div>
+      </aside>
+      
+      <!-- Main content -->
+      <main class="lg:w-3/4">
+        <h2 class="font-poppins text-3xl font-bold text-primary-700 mb-8">Provincial Departments</h2>
+        
+        <DepartmentGrid />
+      </main>
+    </div>
+  </div>
+</Layout>

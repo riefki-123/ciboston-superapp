@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import FeaturedInitiatives from '../components/programs/FeaturedInitiatives.astro';
+import SmartCiboston from '../components/programs/SmartCiboston.astro';
+import EGovernment from '../components/programs/EGovernment.astro';
+import DigitalWelfare from '../components/programs/DigitalWelfare.astro';
+import ProgressMetrics from '../components/programs/ProgressMetrics.astro';
+
+const title = "Programs & Innovations";
+const description = "Discover the innovative programs and initiatives of the Ciboston Provincial Government. From smart city technology to digital welfare programs.";
+---
+
+<Layout 
+  title={title}
+  description={description}
+>
+  <PageHeader 
+    title="Programs & Innovations"
+    subtitle="Pioneering initiatives for a prosperous, connected, and innovative future"
+    backgroundImage="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  />
+  
+  <div class="container mx-auto px-4 py-12">
+    <FeaturedInitiatives />
+    
+    <SmartCiboston />
+    
+    <EGovernment />
+    
+    <DigitalWelfare />
+    
+    <ProgressMetrics />
+  </div>
+</Layout>

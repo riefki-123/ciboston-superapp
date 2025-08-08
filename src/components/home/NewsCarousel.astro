@@ -1,0 +1,238 @@
+---
+const newsItems = [
+  {
+    id: 1,
+    title: "Ciboston Mendukung Palestina",
+    date: "Sepanjang Masa",
+    category: "Kemanusiaan",
+    summary: "Warga dan Pemerintah Provinsi Ciboston mendukung penuh atas Kemerdekaan dan Bantuan Sosial Kepada Warga Palestina di Gaza dan West Bank.",
+    image: "https://images.pexels.com/photos/1426516/pexels-photo-1426516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    link: "/news/transportation-routes"
+  },
+  {
+    id: 2,
+    title: "Penghargaan Ciboston 'Smart City of the Year'",
+    date: "20 Juli 2025",
+    category: "Teknologi",
+    summary: "Kota Ciboston telah diakui secara internasional atas pendekatan inovatifnya dalam tata kelola digital dan infrastruktur cerdas.",
+    image: "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    link: "/news/smart-city-award"
+  },
+  {
+    id: 3,
+    title: "Provinsi Ciboston Meluncurkan Inisiatif Energi Terbarukan",
+    date: "16 Juli 2025",
+    category: "Lingkungan",
+    summary: "Investasi baru senilai $50 juta dalam energi surya dan angin bertujuan untuk mengurangi emisi karbon sebesar 30% dalam lima tahun ke depan.",
+    image: "https://images.pexels.com/photos/2157800/pexels-photo-2157800.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    link: "/news/renewable-energy"
+  },
+  {
+    id: 4,
+    title: "Sosialisasi COSE bahayanya Radikalisme",
+    date: "July 5, 2025",
+    category: "Culture",
+    summary: "Anggota COSE Divisi Cicopenhagen melakukan sosialisasi kepada masyarakat tentang kesadaran terhadap radikalisme yang mengancam Provinsi Ciboston dari antek-antek asing.",
+    image: "https://images.pexels.com/photos/2263436/pexels-photo-2263436.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    link: "/news/culture-festival"
+  }
+];
+---
+
+<div class="relative">
+  <!-- Carousel Container -->
+  <div id="news-carousel" class="relative overflow-hidden">
+    <div class="carousel-inner flex transition-transform duration-500 ease-in-out">
+      {newsItems.map((item) => (
+        <div class="carousel-item w-full lg:w-1/2 flex-shrink-0 px-3">
+          <a 
+            href={item.link}
+            class="block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+          >
+            <div class="relative h-48 overflow-hidden">
+              <img 
+                src={item.image} 
+                alt={item.title}
+                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+              <div class="absolute top-4 left-4">
+                <span class="inline-block bg-secondary-500 text-primary-800 text-xs font-semibold px-3 py-1 rounded-full">
+                  {item.category}
+                </span>
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="text-gray-500 text-sm mb-2">{item.date}</p>
+              <h3 class="font-poppins text-xl font-semibold text-primary-700 mb-3">{item.title}</h3>
+              <p class="text-gray-600 mb-4">{item.summary}</p>
+              <div class="text-primary-600 font-medium inline-flex items-center">
+                Baca Selengkapnya
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </div>
+            </div>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+  
+  <!-- Carousel Controls -->
+  <div class="mt-8 flex justify-center items-center space-x-2">
+    <button 
+      id="prev-button" 
+      class="carousel-control p-2 rounded-full bg-primary-50 text-primary-700 hover:bg-primary-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+      aria-label="Previous slide"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    
+    <div id="carousel-indicators" class="flex space-x-2">
+      {newsItems.map((_, index) => (
+        <button
+          class={`carousel-indicator w-3 h-3 rounded-full transition-all duration-200 ${index === 0 ? 'bg-primary-600' : 'bg-gray-300'}`}
+          data-index={index}
+          aria-label={`Go to slide ${index + 1}`}
+        ></button>
+      ))}
+    </div>
+    
+    <button 
+      id="next-button" 
+      class="carousel-control p-2 rounded-full bg-primary-50 text-primary-700 hover:bg-primary-100 transition-colors duration-200"
+      aria-label="Next slide"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+  
+  <div class="text-center mt-6">
+    <a 
+      href="/news" 
+      class="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
+    >
+      Lihat semua berita dan pengumuman
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+      </svg>
+    </a>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.getElementById('news-carousel');
+    const carouselInner = carousel?.querySelector('.carousel-inner');
+    const items = carousel?.querySelectorAll('.carousel-item');
+    const prevButton = document.getElementById('prev-button');
+    const nextButton = document.getElementById('next-button');
+    const indicators = document.querySelectorAll('.carousel-indicator');
+    
+    if (!carousel || !carouselInner || !items || items.length === 0) return;
+    
+    let currentIndex = 0;
+    const totalItems = items.length;
+    let itemWidth = items[0].clientWidth;
+    let itemsPerView = window.innerWidth >= 1024 ? 2 : 1;
+    let maxIndex = Math.ceil(totalItems / itemsPerView) - 1;
+    
+    // Update carousel dimensions on window resize
+    const updateDimensions = () => {
+      itemWidth = items[0].clientWidth;
+      itemsPerView = window.innerWidth >= 1024 ? 2 : 1;
+      maxIndex = Math.max(0, Math.ceil(totalItems / itemsPerView) - 1);
+      
+      // Ensure current index is valid after resize
+      if (currentIndex > maxIndex) {
+        currentIndex = maxIndex;
+        updateCarousel();
+      }
+    };
+    
+    // Initialize dimensions
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+    
+    // Update carousel position
+    const updateCarousel = () => {
+      if (!carouselInner) return;
+      
+      // Calculate the translation amount based on items per view
+      const translateX = -currentIndex * (itemWidth * itemsPerView);
+      carouselInner.style.transform = `translateX(${translateX}px)`;
+      
+      // Update button states
+      if (prevButton) prevButton.disabled = currentIndex === 0;
+      if (nextButton) nextButton.disabled = currentIndex === maxIndex;
+      
+      // Update indicators
+      indicators.forEach((indicator, index) => {
+        if (index === currentIndex) {
+          indicator.classList.remove('bg-gray-300');
+          indicator.classList.add('bg-primary-600', 'w-6');
+        } else {
+          indicator.classList.remove('bg-primary-600', 'w-6');
+          indicator.classList.add('bg-gray-300');
+        }
+      });
+    };
+    
+    // Event listeners for controls
+    prevButton?.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+      }
+    });
+    
+    nextButton?.addEventListener('click', () => {
+      if (currentIndex < maxIndex) {
+        currentIndex++;
+        updateCarousel();
+      }
+    });
+    
+    // Event listeners for indicators
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel();
+      });
+    });
+    
+    // Initialize carousel
+    updateCarousel();
+    
+    // Auto-rotation (optional)
+    const autoRotationInterval = 7000; // 7 seconds
+    let autoRotation = setInterval(() => {
+      if (currentIndex < maxIndex) {
+        currentIndex++;
+      } else {
+        currentIndex = 0;
+      }
+      updateCarousel();
+    }, autoRotationInterval);
+    
+    // Pause auto-rotation on hover
+    carousel.addEventListener('mouseenter', () => {
+      clearInterval(autoRotation);
+    });
+    
+    carousel.addEventListener('mouseleave', () => {
+      autoRotation = setInterval(() => {
+        if (currentIndex < maxIndex) {
+          currentIndex++;
+        } else {
+          currentIndex = 0;
+        }
+        updateCarousel();
+      }, autoRotationInterval);
+    });
+  });
+</script>

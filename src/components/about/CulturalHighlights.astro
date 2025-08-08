@@ -1,0 +1,54 @@
+---
+const culturalHighlights = [
+  {
+    title: "Annual Harvest Festival",
+    description: "A centuries-old tradition celebrating agricultural prosperity with music, dance, and local cuisine.",
+    image: "https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  },
+  {
+    title: "Provincial Art Museum",
+    description: "Housing over 5,000 artworks from local and international artists, spanning traditional and contemporary styles.",
+    image: "https://images.pexels.com/photos/1674049/pexels-photo-1674049.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  },
+  {
+    title: "Ciboston Philharmonic",
+    description: "Our world-renowned orchestra performs classical and innovative compositions in the historic Concert Hall.",
+    image: "https://images.pexels.com/photos/236149/pexels-photo-236149.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  }
+];
+---
+
+<section class="my-16" id="culture">
+  <h2 class="font-poppins text-3xl font-bold text-primary-700 text-center mb-8">Cultural Highlights</h2>
+  
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    {culturalHighlights.map((item, index) => (
+      <div class="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+        <div class="relative h-48 overflow-hidden">
+          <img 
+            src={item.image} 
+            alt={item.title} 
+            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-primary-900 to-transparent opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
+        </div>
+        <div class="p-6">
+          <h3 class="font-poppins text-xl font-semibold text-primary-700 mb-2">{item.title}</h3>
+          <p class="text-gray-600">{item.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+  
+  <div class="mt-8 text-center">
+    <a 
+      href="/culture" 
+      class="inline-flex items-center px-5 py-2 border border-primary-600 text-primary-600 font-medium rounded-md hover:bg-primary-50 transition-colors duration-300"
+    >
+      Explore Our Cultural Heritage
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+      </svg>
+    </a>
+  </div>
+</section>
