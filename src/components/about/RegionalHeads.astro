@@ -1,40 +1,70 @@
 ---
 const regionalHeads = [
   {
-    name: "Gus Raditya Rizz",
+    name: "Gus Raditya Rizz, S.Kom",
     region: "Cimanuk",
-    image: "https://images.pexels.com/photos/3796217/pexels-photo-3796217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "radit.jpg",
     since: "2023"
   },
   {
     name: "Pj, Fauzan Ghani, S.Goon",
     region: "Manhattan",
-    image: "https://images.pexels.com/photos/5668770/pexels-photo-5668770.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "fauzangoon.jpg",
     since: "2023"
   },
   {
-    name: "Kolonel Aziz F",
-    region: "Ciboston City",
-    image: "https://images.pexels.com/photos/3796227/pexels-photo-3796227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    name: "Ilham Firmansyah, S.Ked",
+    region: "Dirjen Kesehatan",
+    image: "ilham.jpg",
     since: "2023"
   },
   {
     name: "Sensei Reza Gartiwa Faisal, S.Kom",
     region: "Cicopenhangen",
-    image: "https://images.pexels.com/photos/6209350/pexels-photo-6209350.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "reza.jpg",
     since: "2023"
   },
   {
     name: "Tegar Nasution, S.Ds.",
     region: "Munjul Downtown",
-    image: "https://images.pexels.com/photos/6000065/pexels-photo-6000065.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "tegarnas.jpg",
     since: "2023"
+  },
+  {
+    name: "dr. Mikhail, S.Ked",
+    region: "Dinas Kesehatan Ciboston",
+    image: "mike.jpg",
+    since: "2024"
+  },
+  {
+    name: "Diandra Radja Aulia, S.I.Kom",
+    region: "Dinas Pangan Mie Ayam Ciboston",
+    image: "bro.jpg",
+    since: "2024"
+  },
+  {
+    name: "Hj Daffa Chesta, S.Kom",
+    region: "Dinas Kominfo Bobux",
+    image: "daffa.jpg",
+    since: "2024"
+  },
+  {
+    name: "Yuuto Hardian, S.M",
+    region: "Dinas Ketenagakerjaan Ciboston",
+    image: "yuto.jpg",
+    since: "2024"
+  },
+  {
+    name: "Qinthar Shousimin, S.Tek",
+    region: "Dinas Perhubungan Ciboston",
+    image: "kwintal.jpg",
+    since: "2024"
   }
 ];
 ---
 
 <section class="my-16" id="regional-heads">
-  <h2 class="font-poppins text-3xl font-bold text-primary-700 text-center mb-8">Kabupaten</h2>
+  <h2 class="font-poppins text-3xl font-bold text-primary-700 text-center mb-8">Kabupaten dan Dinas</h2>
   
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
     {regionalHeads.map(head => (
@@ -53,7 +83,7 @@ const regionalHeads = [
           <h3 class="font-poppins text-lg font-semibold text-primary-700">{head.name}</h3>
           <p class="text-primary-500">{head.region}</p>
           <a href={`/regions/${head.region.toLowerCase().replace(" region", "")}`} class="mt-2 inline-block text-sm text-primary-600 hover:text-primary-700">
-            Lihat Kabupaten
+            Lihat Lanjut
           </a>
         </div>
       </div>
