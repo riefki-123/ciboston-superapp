@@ -2,43 +2,43 @@
 const officeLocations = [
   {
     name: "Ciboston City Hall",
-    address: "123 Government Avenue, Ciboston City, CP 10001",
+    address: "Ciboston City Senayan Hall, 12 Distrik Pemda Avenue, Ciboston, CP 27087",
     phone: "(555) 123-4567",
-    hours: "Monday - Friday: 8:30 AM - 5:00 PM",
+    hours: "Senin - Jum'at: 8:30 - 17:00",
     coordinates: [40.7128, -74.0060],
-    region: "Central Region"
+    region: "Ciboston"
   },
   {
-    name: "Northern Region Administrative Center",
+    name: "Cimanuk Riverside",
     address: "456 Highland Road, Northvale, CP 20001",
     phone: "(555) 234-5678",
-    hours: "Monday - Friday: 9:00 AM - 4:30 PM",
+    hours: "Senin - Jum'at: 8:30 - 17:00",
     coordinates: [40.8128, -74.1060],
-    region: "Northern Region"
+    region: "Cimanuk"
   },
   {
-    name: "Eastern Region Office",
-    address: "789 Harbor View, Eastport, CP 30001",
+    name: "Manhattan Office",
+    address: "789 Mayora Manhattan, Eastport, CP 30001",
     phone: "(555) 345-6789",
-    hours: "Monday - Friday: 8:30 AM - 5:00 PM",
+    hours: "Senin - Jum'at: 8:30 - 17:00",
     coordinates: [40.7228, -73.9060],
-    region: "Eastern Region"
+    region: "Manhattan"
   },
   {
-    name: "Western Region Complex",
+    name: "Cicopenhangen Hall City",
     address: "321 Industrial Parkway, Westfield, CP 40001",
     phone: "(555) 456-7890",
-    hours: "Monday - Friday: 9:00 AM - 5:30 PM",
+    hours: "Senin - Jum'at: 8:30 - 17:00",
     coordinates: [40.7028, -74.1160],
-    region: "Western Region"
+    region: "Cicopenhangen"
   },
   {
-    name: "Southern Region Center",
-    address: "654 Farmland Drive, Southdale, CP 50001",
+    name: "Munjul Downtown Hall",
+    address: "Jalan 654 Farmland, Southdale, CP 50001",
     phone: "(555) 567-8901",
-    hours: "Monday - Friday: 8:00 AM - 4:00 PM",
+    hours: "Senin - Jum'at: 8:30 - 17:00",
     coordinates: [40.6128, -74.0160],
-    region: "Southern Region"
+    region: "Munjul County"
   }
 ];
 ---
@@ -51,15 +51,15 @@ const officeLocations = [
         <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-primary-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
         </svg>
-        <p class="text-gray-700">Interactive Map</p>
-        <p class="text-sm text-gray-500">This would be an embedded interactive map in a production environment</p>
+        <p class="text-gray-700">Interaktif Map</p>
+        <p class="text-sm text-gray-500">Ini akan menjadi peta interaktif yang terintegrasi dalam lingkungan produksi.</p>
       </div>
     </div>
   </div>
   
   <div class="p-6">
     <div class="mb-6">
-      <h3 class="font-poppins text-xl font-semibold text-primary-700 mb-4">Office Locations</h3>
+      <h3 class="font-poppins text-xl font-semibold text-primary-700 mb-4">Lokasi Kantor</h3>
       
       <div class="space-y-6">
         {officeLocations.map(office => (
@@ -106,13 +106,13 @@ const officeLocations = [
     <div class="bg-primary-50 p-4 rounded-lg">
       <h4 class="font-medium text-primary-700 mb-2">Virtual Services</h4>
       <p class="text-sm text-gray-600 mb-3">
-        Many of our services are available online. You can access them 24/7 without visiting an office.
+        Banyak layanan kami tersedia secara online. Anda dapat mengaksesnya 24 jam sehari, 7 hari seminggu tanpa perlu mengunjungi kantor.
       </p>
       <a 
         href="/services/online" 
         class="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
       >
-        Access Online Services
+        Akses Layanan Daring
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
         </svg>

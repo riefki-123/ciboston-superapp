@@ -1,58 +1,59 @@
 ---
 const initiatives = [
   {
-    title: "Digital Citizenship",
-    description: "A program to ensure all citizens have digital IDs and access to online government services.",
+    title: "Kewarganegaraan Digital",
+    description: "Program untuk memastikan semua warga memiliki identitas digital dan akses ke layanan pemerintah daring.",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
           </svg>`,
     progress: 75,
-    status: "Active",
+    status: "Aktif",
     link: "/programs/digital-citizenship"
   },
   {
-    title: "Green Energy Transition",
-    description: "Initiative to transition 80% of provincial energy production to renewable sources by 2030.",
+    title: "Transisi Energi Hijau",
+    description: "Inisiatif untuk mentransisikan 80% produksi energi provinsi ke sumber terbarukan pada tahun 2030.",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>`,
     progress: 60,
-    status: "Active",
+    status: "Aktif",
     link: "/programs/green-energy"
   },
   {
-    title: "Smart Transportation Network",
-    description: "Implementing AI-driven traffic management and autonomous vehicle infrastructure.",
+    title: "Jaringan Transportasi Cerdas",
+    description: "Menerapkan manajemen lalu lintas berbasis AI dan infrastruktur kendaraan otonom.",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
           </svg>`,
     progress: 45,
-    status: "Active",
+    status: "Aktif",
     link: "/programs/smart-transportation"
   },
   {
-    title: "Affordable Housing Initiative",
-    description: "Program to develop sustainable, affordable housing in urban and suburban areas.",
+    title: "Inisiatif Perumahan Terjangkau",
+    description: "Program pengembangan perumahan yang berkelanjutan dan terjangkau di kawasan urban dan pinggiran kota.",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
           </svg>`,
     progress: 30,
-    status: "Active",
+    status: "Aktif",
     link: "/programs/affordable-housing"
   }
 ];
 ---
 
 <section class="my-12">
-  <h2 class="font-poppins text-3xl font-bold text-primary-700 text-center mb-12">Featured Initiatives</h2>
+  <h2 class="font-poppins text-3xl font-bold text-primary-700 text-center mb-12">Inisiatif Unggulan</h2>
   
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
     {initiatives.map(initiative => (
       <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300 relative">
+        
         <!-- Status Badge -->
         <div class="absolute top-4 right-4">
           <span class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-            initiative.status === 'Active' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
+            initiative.status === 'Aktif' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
           }`}>
             {initiative.status}
           </span>
@@ -70,7 +71,7 @@ const initiatives = [
         <!-- Progress Bar -->
         <div class="mt-4 mb-5">
           <div class="flex justify-between items-center mb-1">
-            <span class="text-sm font-medium text-gray-700">Progress</span>
+            <span class="text-sm font-medium text-gray-700">Progres</span>
             <span class="text-sm font-medium text-gray-700">{initiative.progress}%</span>
           </div>
           <div class="w-full bg-gray-200 rounded-full h-2.5 mb-4">
@@ -83,7 +84,7 @@ const initiatives = [
           href={initiative.link} 
           class="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
         >
-          Learn more
+          Pelajari lebih lanjut
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
           </svg>

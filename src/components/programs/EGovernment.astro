@@ -1,23 +1,23 @@
 ---
 const eServices = [
   {
-    title: "Personal Document Portal",
-    description: "Apply for and renew ID cards, birth certificates, and other personal documents online.",
+    title: "Portal Dokumen Pribadi",
+    description: "Ajukan dan perpanjang KTP, akta kelahiran, dan dokumen pribadi lainnya secara daring.",
     icon: "document-text"
   },
   {
-    title: "Business Licensing System",
-    description: "Complete business registration, licensing, and reporting requirements through our online portal.",
+    title: "Sistem Perizinan Usaha",
+    description: "Lakukan pendaftaran, perizinan, dan pelaporan usaha melalui portal daring kami.",
     icon: "briefcase"
   },
   {
-    title: "Provincial Tax Filing",
-    description: "File and pay provincial taxes electronically with real-time processing and confirmation.",
+    title: "Pelaporan Pajak Provinsi",
+    description: "Laporkan dan bayar pajak provinsi secara elektronik dengan pemrosesan dan konfirmasi waktu nyata.",
     icon: "cash"
   },
   {
-    title: "Healthcare Management",
-    description: "Schedule appointments, access medical records, and manage prescriptions online.",
+    title: "Manajemen Layanan Kesehatan",
+    description: "Jadwalkan janji temu, akses rekam medis, dan kelola resep obat secara daring.",
     icon: "heart"
   }
 ];
@@ -30,27 +30,27 @@ const processingTime = 73; // Percentage
 <section class="my-16">
   <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
     <div class="lg:col-span-2 flex flex-col justify-center">
-      <h2 class="font-poppins text-3xl font-bold text-primary-700 mb-6">E-Government Services Portal</h2>
+      <h2 class="font-poppins text-3xl font-bold text-primary-700 mb-6">Portal Layanan E-Goverment</h2>
       
       <p class="text-gray-600 mb-6">
-        Our comprehensive digital government platform provides citizens and businesses with 24/7 access to provincial services. The platform eliminates paperwork, reduces processing times, and improves service delivery efficiency.
+        Platform pemerintah digital kami yang komprehensif memberikan akses 24/7 kepada warga dan pelaku usaha untuk mengakses layanan provinsi. Platform ini menghilangkan dokumen fisik, mengurangi waktu pemrosesan, dan meningkatkan efisiensi penyampaian layanan.
       </p>
       
       <!-- Metrics -->
       <div class="grid grid-cols-3 gap-4 mb-6">
         <div class="text-center p-4 bg-primary-50 rounded-lg">
           <div class="text-3xl font-bold text-primary-700">{userSatisfaction}%</div>
-          <div class="text-xs text-gray-600">User Satisfaction</div>
+          <div class="text-xs text-gray-600">Kepuasan Warga</div>
         </div>
         
         <div class="text-center p-4 bg-primary-50 rounded-lg">
           <div class="text-3xl font-bold text-primary-700">{paperReduction}%</div>
-          <div class="text-xs text-gray-600">Paper Reduction</div>
+          <div class="text-xs text-gray-600">Pengurangan kertas</div>
         </div>
         
         <div class="text-center p-4 bg-primary-50 rounded-lg">
           <div class="text-3xl font-bold text-primary-700">{processingTime}%</div>
-          <div class="text-xs text-gray-600">Faster Processing</div>
+          <div class="text-xs text-gray-600">Proses Lebih Cepat</div>
         </div>
       </div>
       
@@ -58,7 +58,7 @@ const processingTime = 73; // Percentage
         href="/services/e-government" 
         class="inline-flex items-center px-6 py-3 bg-primary-600 text-white font-medium rounded-md hover:bg-primary-700 transition-colors duration-300 shadow-md self-start"
       >
-        Access E-Services
+        Akses Layanan Digital
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
         </svg>
@@ -68,7 +68,7 @@ const processingTime = 73; // Percentage
     <div class="lg:col-span-3">
       <div class="bg-white rounded-xl shadow-md overflow-hidden">
         <div class="p-6 border-b border-gray-100">
-          <h3 class="font-poppins text-xl font-semibold text-primary-700">Popular E-Government Services</h3>
+          <h3 class="font-poppins text-xl font-semibold text-primary-700">Layanan E-Government Populer</h3>
         </div>
         
         <div class="p-6">
@@ -107,7 +107,7 @@ const processingTime = 73; // Percentage
                   <h4 class="font-medium text-gray-800 mb-1">{service.title}</h4>
                   <p class="text-gray-600 text-sm">{service.description}</p>
                   <a href={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`} class="mt-2 inline-block text-sm text-primary-600 hover:text-primary-700">
-                    Access service →
+                    Akses layanan →
                   </a>
                 </div>
               </div>
@@ -118,15 +118,15 @@ const processingTime = 73; // Percentage
         <div class="bg-gradient-to-r from-primary-50 to-white p-6 border-t border-gray-100">
           <div class="flex items-center justify-between">
             <div>
-              <p class="font-medium text-gray-800">Need assistance?</p>
-              <p class="text-sm text-gray-600">Our digital support team is available 24/7</p>
+              <p class="font-medium text-gray-800">Butuh Bantuan?</p>
+              <p class="text-sm text-gray-600">Tim Dukungan digital kami tersedia 24/7</p>
             </div>
             
             <a 
               href="/help" 
               class="px-4 py-2 bg-white border border-primary-300 text-primary-600 font-medium rounded-md hover:bg-primary-50 transition-colors duration-200"
             >
-              Get Help
+              Dapatkan Bantuan
             </a>
           </div>
         </div>

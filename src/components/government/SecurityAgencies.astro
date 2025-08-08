@@ -4,13 +4,13 @@ const securityAgencies = [
     id: "cose",
     name: "COSE",
     fullName: "Ciboston Office and Security Enforcement",
-    description: "Responsible for intelligence operations, counter-terrorism, and high-level security coordination across the province.",
-    director: "Director James Morrison",
+    description: "Bertanggung jawab atas operasi intelijen, kontra-terorisme, dan koordinasi keamanan tingkat tinggi di seluruh provinsi.",
+    director: "Kolonel Meilima Idfa Ariandika",
     responsibilities: [
-      "Counter-terrorism operations",
-      "Intelligence gathering",
-      "Special investigations",
-      "Provincial security coordination"
+      "Operasi kontra-terorisme",
+      "Penyelamatan Sandera",
+      "Investigasi Istimewa",
+      "Koordinator Keamanan Provinsi"
     ],
     image: "https://images.pexels.com/photos/5721883/pexels-photo-5721883.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   },
@@ -18,13 +18,13 @@ const securityAgencies = [
     id: "ccpd",
     name: "CCPD",
     fullName: "Ciboston City Police Department",
-    description: "The primary law enforcement agency serving Ciboston City with community policing and crime prevention programs.",
+    description: "Lembaga penegak hukum utama yang melayani Kota Ciboston dengan program kepolisian berbasis masyarakat dan pencegahan kejahatan.",
     director: "Commissioner Diana Reynolds",
     responsibilities: [
-      "Urban law enforcement",
-      "Criminal investigations",
-      "Traffic management",
-      "Community policing programs"
+      "Penegakan hukum di Urban",
+      "Investigasi Kriminal",
+      "Traffic Management",
+      "Program kepolisian berbasis masyarakat"
     ],
     image: "https://images.pexels.com/photos/3861458/pexels-photo-3861458.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   },
@@ -32,13 +32,13 @@ const securityAgencies = [
     id: "chp",
     name: "CHP",
     fullName: "Ciboston Highway Police",
-    description: "Maintains safety on provincial highways and rural roads, conducting traffic enforcement and accident response.",
+    description: "Menjaga keamanan di Jalan Raya provinsi dan jalan desa, melaksanakan penegakan lalu lintas dan tanggap kecelakaan.",
     director: "Chief Thomas Lee",
     responsibilities: [
-      "Highway patrol",
-      "Traffic enforcement",
-      "Accident investigation",
-      "Rural area security"
+      "Patroli Jalan Raya",
+      "Traffic Enforcement",
+      "Penyelidikan Kecelakaan",
+      "Keamanan di daerah Pedesaan"
     ],
     image: "https://images.pexels.com/photos/4490252/pexels-photo-4490252.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   },
@@ -46,13 +46,13 @@ const securityAgencies = [
     id: "ccfd",
     name: "CCFD",
     fullName: "Ciboston City Fire Department",
-    description: "Provides fire suppression, rescue services, and fire prevention education throughout the province.",
+    description: "Menyediakan layanan pemadaman kebakaran, penyelamatan, dan pendidikan pencegahan kebakaran di seluruh provinsi.",
     director: "Chief Sophia Martinez",
     responsibilities: [
-      "Fire suppression",
-      "Emergency rescue",
-      "Hazardous materials response",
-      "Fire prevention education"
+      "Pemadaman kebakaran",
+      "Penyelamatan darurat",
+      "Tanggap darurat Hazard",
+      "Pendidikan pencegahan kebakaran"
     ],
     image: "https://images.pexels.com/photos/4058571/pexels-photo-4058571.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   },
@@ -60,13 +60,13 @@ const securityAgencies = [
     id: "wssk",
     name: "WSSK",
     fullName: "Worldwide Strategic Special Force Kommando",
-    description: "Elite tactical unit handling high-risk operations, hostage situations, and specialized security missions.",
-    director: "Commander Alexander Wright",
+    description: "Unit taktis elit yang menangani operasi berisiko tinggi, situasi sandera, dan misi keamanan khusus.",
+    director: "Kolonel Meilima Idfa Ariandika",
     responsibilities: [
-      "Tactical response operations",
-      "Hostage rescue",
-      "High-risk warrant execution",
-      "VIP protection"
+      "Operasi tanggap taktis",
+      "Pengumpulan Informasi",
+      "Pelaksanaan surat perintah penangkapan berisiko tinggi",
+      "Proteksi Pemimpin Negara"
     ],
     image: "https://images.pexels.com/photos/6286846/pexels-photo-6286846.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   }
@@ -112,7 +112,7 @@ const securityAgencies = [
           
           <div class="mt-6">
             <a href={`/agencies/${agency.id}`} class="inline-flex items-center text-primary-600 hover:text-primary-700">
-              Learn more about {agency.name}
+              Pelajari Lebih Lanjut {agency.name}
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>

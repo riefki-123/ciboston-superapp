@@ -1,40 +1,40 @@
 ---
 const regionalHeads = [
   {
-    name: "Dr. Sarah Jenkins",
-    region: "Northern Region",
+    name: "Gus Raditya Rizz",
+    region: "Cimanuk",
     image: "https://images.pexels.com/photos/3796217/pexels-photo-3796217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     since: "2023"
   },
   {
-    name: "Robert Kim",
-    region: "Eastern Region",
+    name: "Pj, Fauzan Ghani, S.Goon",
+    region: "Manhattan",
     image: "https://images.pexels.com/photos/5668770/pexels-photo-5668770.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    since: "2021"
+    since: "2023"
   },
   {
-    name: "Elena Gonzalez",
-    region: "Central Region",
+    name: "Kolonel Aziz F",
+    region: "Ciboston City",
     image: "https://images.pexels.com/photos/3796227/pexels-photo-3796227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    since: "2022"
+    since: "2023"
   },
   {
-    name: "Michael Okafor",
-    region: "Western Region",
+    name: "Sensei Reza Gartiwa Faisal, S.Kom",
+    region: "Cicopenhangen",
     image: "https://images.pexels.com/photos/6209350/pexels-photo-6209350.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    since: "2024"
+    since: "2023"
   },
   {
-    name: "Priya Sharma",
-    region: "Southern Region",
+    name: "Tegar Nasution, S.Ds.",
+    region: "Munjul Downtown",
     image: "https://images.pexels.com/photos/6000065/pexels-photo-6000065.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    since: "2020"
+    since: "2023"
   }
 ];
 ---
 
 <section class="my-16" id="regional-heads">
-  <h2 class="font-poppins text-3xl font-bold text-primary-700 text-center mb-8">Regional Administration</h2>
+  <h2 class="font-poppins text-3xl font-bold text-primary-700 text-center mb-8">Kabupaten</h2>
   
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
     {regionalHeads.map(head => (
@@ -53,7 +53,7 @@ const regionalHeads = [
           <h3 class="font-poppins text-lg font-semibold text-primary-700">{head.name}</h3>
           <p class="text-primary-500">{head.region}</p>
           <a href={`/regions/${head.region.toLowerCase().replace(" region", "")}`} class="mt-2 inline-block text-sm text-primary-600 hover:text-primary-700">
-            View Region
+            Lihat Kabupaten
           </a>
         </div>
       </div>

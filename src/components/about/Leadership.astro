@@ -1,32 +1,32 @@
 ---
 const leaders = [
   {
-    name: "Dr. Amelia Chen",
-    title: "Governor",
+    name: "Chief Riefki Nugraha, S.Kom",
+    title: "Gubernur",
     image: "https://images.pexels.com/photos/5792641/pexels-photo-5792641.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    bio: "Dr. Chen has served as Governor since 2022. With a background in public administration and economics, she has led Ciboston through significant digital transformation and economic growth. Prior to becoming Governor, she served as the Minister of Economic Development for 6 years.",
+    bio: "Chief Riefki telah menjabat sebagai Gubernur sejak tahun 2024. Dengan latar belakang di bidang Teknologi. Sebelum menjabat sebagai Gubernur, beliau pernah menjabat sebagai Ketua Umum Federasi Informatika selama 2 Tahun.",
     achievements: [
-      "Implemented the Smart Province Initiative",
-      "Expanded healthcare access to rural communities",
-      "Reduced unemployment by 15% through business development programs"
+      "Menerapkan Inisiatif Provinsi Cerdas",
+      "Membentuk Industri Teknologi 5.0",
+      "Mengurangi tingkat pengangguran sebesar 15% melalui program pengembangan usaha."
     ]
   },
   {
-    name: "Marcus Rodriguez",
-    title: "Deputy Governor",
+    name: "Kolonel Aziz F",
+    title: "Walikota Ciboston City",
     image: "https://images.pexels.com/photos/5490276/pexels-photo-5490276.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    bio: "Deputy Governor Rodriguez brings over 20 years of public service experience, specializing in infrastructure development and public safety. He oversees the day-to-day operations of provincial departments and coordinates with regional administrators.",
+    bio: "Walikota Ciboston City mengabdi lebih dari 20 tahun di Militer Division World Wide Strategis Kommando. dengan spesialisasi dalam pengembangan infrastruktur dan keamanan publik. Ia mengawasi operasional harian departemen-departemen provinsi dan berkoordinasi dengan administrator regional",
     achievements: [
-      "Led the Provincial Resilience Plan",
-      "Modernized the emergency response systems",
-      "Established the Ciboston Innovation Hub"
+      "Pendiri dan CEO Jiz Solution",
+      "Memperbarui sistem tanggap darurat",
+      "Mendirikan Ciboston Innovation Hub"
     ]
   }
 ];
 ---
 
 <section class="my-16" id="leadership">
-  <h2 class="font-poppins text-3xl font-bold text-primary-700 text-center mb-8">Provincial Leadership</h2>
+  <h2 class="font-poppins text-3xl font-bold text-primary-700 text-center mb-8">Kepemimpinan Provinsi</h2>
   
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
     {leaders.map(leader => (
@@ -57,7 +57,7 @@ const leaders = [
             </div>
             
             <div>
-              <h4 class="font-medium text-gray-900 mb-2">Key Achievements:</h4>
+              <h4 class="font-medium text-gray-900 mb-2">Prestasi Utama:</h4>
               <ul class="space-y-2">
                 {leader.achievements.map(achievement => (
                   <li class="flex items-start">

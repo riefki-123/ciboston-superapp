@@ -6,7 +6,10 @@ const regions = [
     population: '1.2 Juta',
     capital: 'Cimanuk Riverside',
     description: 'Kabupaten Agraris',
-    position: 'top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
+    svgPath: 'M 200 50 Q 300 20 400 50 L 380 150 Q 300 120 220 150 Z',
+    markerX: 310,
+    markerY: 85,
+    color: '#10b981'
   },
   { 
     id: 'eastern', 
@@ -14,7 +17,10 @@ const regions = [
     population: '1.5 Juta',
     capital: 'Mayora Manhattan',
     description: 'Kota Finansial',
-    position: 'top-1/2 right-8 transform -translate-y-1/2'
+    svgPath: 'M 380 150 L 480 140 Q 520 180 500 250 L 420 280 Q 380 220 380 150 Z',
+    markerX: 440,
+    markerY: 200,
+    color: '#3b82f6'
   },
   { 
     id: 'central', 
@@ -22,23 +28,32 @@ const regions = [
     population: '2.4 Juta',
     capital: 'Ciboston City',
     description: 'Jantung Provinsi Ciboston',
-    position: 'top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
+    svgPath: 'M 220 150 Q 300 120 380 150 Q 380 220 420 280 L 320 320 L 180 280 Q 160 220 220 150 Z',
+    markerX: 300,
+    markerY: 215,
+    color: '#dc2626'
   },
   { 
     id: 'western', 
     name: 'Cicopenhangen', 
-    population: '1.3 million',
+    population: '1.3 Juta',
     capital: 'Cicopenhangen City',
     description: 'Kota Pelabuhan',
-    position: 'top-1/2 left-8 transform -translate-y-1/2'
+    svgPath: 'M 80 140 Q 120 120 180 280 L 100 320 Q 50 250 80 140 Z',
+    markerX: 130,
+    markerY: 220,
+    color: '#0891b2'
   },
   { 
     id: 'southern', 
     name: 'Munjul', 
-    population: '1.1 million',
+    population: '1.1 Juta',
     capital: 'Ciruum Cup',
     description: 'Kota Pendidikan dan Budaya',
-    position: 'bottom-8 left-1/2 transform -translate-x-1/2'
+    svgPath: 'M 100 320 L 180 280 L 320 320 Q 350 380 250 400 Q 150 380 100 320 Z',
+    markerX: 230,
+    markerY: 350,
+    color: '#7c3aed'
   }
 ];
 ---
@@ -46,41 +61,182 @@ const regions = [
 <section class="my-16">
   <h2 class="font-poppins text-3xl font-bold text-primary-700 text-center mb-8">Jelajah Provinsi Kami</h2>
   
-  <div class="relative w-full bg-gray-100 rounded-xl shadow-md overflow-hidden" style="min-height: 400px;">
+  <div class="relative w-full bg-gradient-to-br from-blue-50 to-green-50 rounded-xl shadow-lg overflow-hidden" style="min-height: 500px;">
     <!-- Interactive Map -->
-    <div id="interactive-map" class="w-full h-[450px] relative overflow-hidden bg-primary-50 rounded-xl">
-      <!-- Map Outline - In a real implementation, this would be an SVG map of the province -->
-      <div class="absolute inset-0 flex items-center justify-center opacity-20">
-        <div class="w-[80%] h-[80%] border-4 border-primary-700 rounded-[40%] relative">
-          <!-- This is a simplified placeholder - in a real app, use an actual SVG map -->
-          <div class="absolute top-0 left-0 w-full h-full border-4 border-primary-700 rounded-[45%] rotate-45"></div>
-        </div>
-      </div>
+    <div id="interactive-map" class="w-full h-[500px] relative overflow-hidden rounded-xl">
       
-      <!-- Region Markers -->
-      {regions.map(region => (
-        <button
-          id={`marker-${region.id}`}
-          class={`absolute ${region.position} w-6 h-6 bg-secondary-500 rounded-full cursor-pointer border-2 border-white shadow-md transform hover:scale-125 transition-transform duration-300 z-10`}
-          data-region={region.id}
-          aria-label={`View ${region.name}`}
-        ></button>
-      ))}
+      <!-- SVG Map -->
+      <svg 
+        viewBox="0 0 600 450" 
+        class="w-full h-full absolute inset-0"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <!-- Background patterns and gradients -->
+        <defs>
+          <!-- Mountain pattern for northern agricultural region -->
+          <pattern id="mountainPattern" patternUnits="userSpaceOnUse" width="20" height="20">
+            <rect width="20" height="20" fill="#f0fdf4"/>
+            <path d="M0,15 L5,5 L10,15 M10,15 L15,5 L20,15" stroke="#16a34a" stroke-width="1" fill="none" opacity="0.3"/>
+          </pattern>
+          
+          <!-- Wave pattern for coastal regions -->
+          <pattern id="wavePattern" patternUnits="userSpaceOnUse" width="30" height="10">
+            <rect width="30" height="10" fill="#f0f9ff"/>
+            <path d="M0,5 Q7.5,0 15,5 Q22.5,10 30,5" stroke="#0284c7" stroke-width="1" fill="none" opacity="0.3"/>
+          </pattern>
+          
+          <!-- City pattern for urban areas -->
+          <pattern id="cityPattern" patternUnits="userSpaceOnUse" width="25" height="25">
+            <rect width="25" height="25" fill="#fefbfb"/>
+            <rect x="5" y="15" width="4" height="8" fill="#6b7280" opacity="0.3"/>
+            <rect x="12" y="10" width="4" height="13" fill="#6b7280" opacity="0.3"/>
+            <rect x="19" y="12" width="3" height="11" fill="#6b7280" opacity="0.3"/>
+          </pattern>
+          
+          <!-- Gradient for water bodies -->
+          <linearGradient id="waterGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#7dd3fc;stop-opacity:0.8" />
+            <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:0.8" />
+          </linearGradient>
+          
+          <!-- Shadow filter -->
+          <filter id="regionShadow">
+            <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+          </filter>
+        </defs>
+        
+        <!-- Background terrain features -->
+        <!-- Rivers -->
+        <path d="M 50 180 Q 150 160 250 200 Q 350 180 450 220 Q 500 240 550 200" 
+              stroke="url(#waterGradient)" stroke-width="8" fill="none" opacity="0.6"/>
+        <path d="M 300 80 Q 320 120 300 180 Q 280 240 320 300" 
+              stroke="url(#waterGradient)" stroke-width="6" fill="none" opacity="0.6"/>
+        
+        <!-- Mountains in background -->
+        <g opacity="0.15">
+          <path d="M 150 100 L 180 60 L 210 100 Z" fill="#6b7280"/>
+          <path d="M 350 90 L 380 50 L 410 90 Z" fill="#6b7280"/>
+          <path d="M 80 200 L 110 160 L 140 200 Z" fill="#6b7280"/>
+        </g>
+        
+        <!-- Region paths with patterns -->
+        {regions.map(region => (
+          <path
+            id={`region-${region.id}`}
+            d={region.svgPath}
+            fill={region.id === 'northern' ? 'url(#mountainPattern)' : 
+                  region.id === 'western' ? 'url(#wavePattern)' : 
+                  region.id === 'central' ? 'url(#cityPattern)' : 
+                  region.color + '20'}
+            stroke={region.color}
+            stroke-width="2"
+            class="region-path cursor-pointer transition-all duration-300 hover:brightness-110"
+            filter="url(#regionShadow)"
+            data-region={region.id}
+          />
+        ))}
+        
+        <!-- Region labels -->
+        {regions.map(region => (
+          <text 
+            x={region.markerX} 
+            y={region.markerY - 20} 
+            text-anchor="middle" 
+            class="font-poppins text-sm font-semibold pointer-events-none"
+            fill="#374151"
+          >
+            {region.name}
+          </text>
+        ))}
+        
+        <!-- Interactive markers -->
+        {regions.map(region => (
+          <g>
+            <!-- Marker shadow -->
+            <circle
+              cx={region.markerX + 1}
+              cy={region.markerY + 1}
+              r="8"
+              fill="rgba(0,0,0,0.2)"
+            />
+            <!-- Main marker -->
+            <circle
+              id={`marker-${region.id}`}
+              cx={region.markerX}
+              cy={region.markerY}
+              r="8"
+              fill={region.color}
+              stroke="white"
+              stroke-width="2"
+              class="marker cursor-pointer transition-all duration-300 hover:r-10"
+              data-region={region.id}
+            />
+            <!-- Marker center dot -->
+            <circle
+              cx={region.markerX}
+              cy={region.markerY}
+              r="3"
+              fill="white"
+              class="pointer-events-none"
+            />
+          </g>
+        ))}
+        
+        <!-- Province border -->
+        <path d="M 50 100 Q 100 50 200 50 Q 400 30 500 80 Q 550 150 520 250 Q 500 350 400 390 Q 250 420 150 380 Q 50 300 50 200 Q 45 150 50 100 Z"
+              fill="none" 
+              stroke="#1f2937" 
+              stroke-width="3" 
+              stroke-dasharray="10,5"
+              opacity="0.4"/>
+      </svg>
       
       <!-- Region Info Panel -->
-      <div id="region-info" class="absolute bottom-4 left-4 right-4 md:left-auto md:right-4 md:w-80 bg-white p-4 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 invisible">
-        <h3 id="region-name" class="font-poppins text-xl font-semibold text-primary-700 mb-2"></h3>
+      <div id="region-info" class="absolute bottom-4 left-4 right-4 md:left-auto md:right-4 md:w-80 bg-white/95 backdrop-blur-sm p-4 rounded-lg shadow-xl border border-gray-200 opacity-0 transition-all duration-300 invisible transform translate-y-2">
+        <div class="flex items-center mb-3">
+          <div id="region-color-indicator" class="w-4 h-4 rounded-full mr-3"></div>
+          <h3 id="region-name" class="font-poppins text-xl font-semibold text-primary-700"></h3>
+        </div>
         <div class="space-y-2 text-sm">
           <p class="flex items-center">
-            <span class="font-medium text-gray-700 w-20">Kapital:</span> 
-            <span id="region-capital"></span>
+            <span class="font-medium text-gray-700 w-20">Ibukota:</span> 
+            <span id="region-capital" class="text-gray-900"></span>
           </p>
           <p class="flex items-center">
             <span class="font-medium text-gray-700 w-20">Populasi:</span> 
-            <span id="region-population"></span>
+            <span id="region-population" class="text-gray-900"></span>
           </p>
-          <p id="region-description" class="text-gray-600 mt-2"></p>
-          <a id="region-link" href="#" class="inline-block mt-2 text-primary-600 hover:underline">Pelajari →</a>
+          <p id="region-description" class="text-gray-600 mt-3 leading-relaxed"></p>
+          <a id="region-link" href="#" class="inline-block mt-3 px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors duration-200 text-sm font-medium">
+            Pelajari Lebih Lanjut →
+          </a>
+        </div>
+      </div>
+      
+      <!-- Legend -->
+      <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm p-3 rounded-lg shadow-md border border-gray-200">
+        <h4 class="font-poppins text-sm font-semibold text-gray-700 mb-2">Legenda</h4>
+        <div class="space-y-1 text-xs">
+          <div class="flex items-center">
+            <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+            <span>Agraris</span>
+          </div>
+          <div class="flex items-center">
+            <div class="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+            <span>Finansial</span>
+          </div>
+          <div class="flex items-center">
+            <div class="w-3 h-3 bg-red-600 rounded-full mr-2"></div>
+            <span>Pusat Provinsi</span>
+          </div>
+          <div class="flex items-center">
+            <div class="w-3 h-3 bg-cyan-600 rounded-full mr-2"></div>
+            <span>Pelabuhan</span>
+          </div>
+          <div class="flex items-center">
+            <div class="w-3 h-3 bg-purple-600 rounded-full mr-2"></div>
+            <span>Pendidikan</span>
+          </div>
         </div>
       </div>
     </div>
@@ -94,40 +250,45 @@ const regions = [
       name: 'Cimanuk', 
       population: '1.2 Juta',
       capital: 'Cimanuk Riverside',
-      description: 'Kabupaten Agraris',
-      link: '/wilayah/cimanuk'
+      description: 'Wilayah agraris yang subur dengan sistem irigasi modern. Pusat produksi pangan provinsi dengan teknologi pertanian terdepan.',
+      link: '/wilayah/cimanuk',
+      color: '#10b981'
     },
     { 
       id: 'eastern', 
       name: 'Manhattan', 
       population: '1.5 Juta',
       capital: 'Mayora Manhattan',
-      description: 'Kota Finansial',
-      link: '/wilayah/manhattan'
+      description: 'Pusat finansial dan bisnis modern dengan gedung-gedung pencakar langit. Hub ekonomi digital dan startup teknologi.',
+      link: '/wilayah/manhattan',
+      color: '#3b82f6'
     },
     { 
       id: 'central', 
       name: 'Ciboston', 
       population: '2.4 Juta',
       capital: 'Ciboston City',
-      description: 'Ibu kota provinsi dan pusat ekonomi Ciboston',
-      link: '/wilayah/IKPCiboston'
+      description: 'Ibu kota provinsi dan pusat pemerintahan. Kota metropolitan dengan infrastruktur lengkap dan fasilitas publik modern.',
+      link: '/wilayah/IKPCiboston',
+      color: '#dc2626'
     },
     { 
       id: 'western', 
       name: 'Cicopenhangen', 
       population: '1.3 Juta',
       capital: 'Cicopenhangen City',
-      description: 'Kota Pelabuhan dan Industri',
-      link: '/wilayah/cicopehangen'
+      description: 'Kota pelabuhan utama dengan aktivitas perdagangan internasional. Pusat industri maritim dan logistik provinsi.',
+      link: '/wilayah/cicopenhangen',
+      color: '#0891b2'
     },
     { 
       id: 'southern', 
       name: 'Munjul', 
-      population: '1.1 million',
-      capital: 'Munjul Downtown',
-      description: 'Kota Budaya dan Pendidikan.',
-      link: '/wilayah/munjul'
+      population: '1.1 Juta',
+      capital: 'Ciruum Cup',
+      description: 'Kota budaya dengan universitas-universitas terkemuka. Pusat seni, penelitian, dan warisan budaya daerah.',
+      link: '/wilayah/munjul',
+      color: '#7c3aed'
     }
   ];
 
@@ -138,25 +299,65 @@ const regions = [
     const regionPopulationEl = document.getElementById('region-population');
     const regionDescriptionEl = document.getElementById('region-description');
     const regionLinkEl = document.getElementById('region-link');
+    const regionColorEl = document.getElementById('region-color-indicator');
     
+    // Add hover effects to regions and markers
     regionsData.forEach(region => {
+      const regionPath = document.getElementById(`region-${region.id}`);
       const markerEl = document.getElementById(`marker-${region.id}`);
       
-      markerEl?.addEventListener('click', () => {
+      const showRegionInfo = () => {
         // Update info panel
         if (regionNameEl) regionNameEl.textContent = region.name;
         if (regionCapitalEl) regionCapitalEl.textContent = region.capital;
         if (regionPopulationEl) regionPopulationEl.textContent = region.population;
         if (regionDescriptionEl) regionDescriptionEl.textContent = region.description;
+        if (regionColorEl) regionColorEl.style.backgroundColor = region.color;
         if (regionLinkEl) {
           regionLinkEl.setAttribute('href', region.link);
-          regionLinkEl.textContent = `Explore ${region.name} →`;
+          regionLinkEl.textContent = `Jelajahi ${region.name} →`;
         }
         
-        // Show info panel
+        // Show info panel with animation
         if (regionInfo) {
-          regionInfo.classList.remove('invisible', 'opacity-0');
-          regionInfo.classList.add('opacity-100');
+          regionInfo.classList.remove('invisible', 'opacity-0', 'translate-y-2');
+          regionInfo.classList.add('opacity-100', 'translate-y-0');
+        }
+        
+        // Highlight the region
+        if (regionPath) {
+          regionPath.style.filter = 'url(#regionShadow) brightness(1.1) saturate(1.2)';
+          regionPath.style.strokeWidth = '3';
+        }
+        if (markerEl) {
+          markerEl.setAttribute('r', '10');
+        }
+      };
+      
+      const hideRegionHighlight = () => {
+        if (regionPath) {
+          regionPath.style.filter = 'url(#regionShadow)';
+          regionPath.style.strokeWidth = '2';
+        }
+        if (markerEl) {
+          markerEl.setAttribute('r', '8');
+        }
+      };
+      
+      // Event listeners for both region paths and markers
+      [regionPath, markerEl].forEach(element => {
+        if (element) {
+          element.addEventListener('click', showRegionInfo);
+          element.addEventListener('mouseenter', () => {
+            if (regionPath) {
+              regionPath.style.filter = 'url(#regionShadow) brightness(1.05)';
+            }
+          });
+          element.addEventListener('mouseleave', () => {
+            if (!regionInfo?.classList.contains('opacity-100')) {
+              hideRegionHighlight();
+            }
+          });
         }
       });
     });
@@ -165,12 +366,41 @@ const regions = [
     document.addEventListener('click', (e) => {
       const target = e.target as HTMLElement;
       const isMarker = target.closest('[id^="marker-"]');
+      const isRegionPath = target.closest('[id^="region-"]');
       const isInfoPanel = target.closest('#region-info');
       
-      if (!isMarker && !isInfoPanel && regionInfo?.classList.contains('opacity-100')) {
-        regionInfo.classList.remove('opacity-100');
-        regionInfo.classList.add('opacity-0', 'invisible');
+      if (!isMarker && !isRegionPath && !isInfoPanel && regionInfo?.classList.contains('opacity-100')) {
+        regionInfo.classList.remove('opacity-100', 'translate-y-0');
+        regionInfo.classList.add('opacity-0', 'invisible', 'translate-y-2');
+        
+        // Remove all region highlights
+        regionsData.forEach(region => {
+          const regionPath = document.getElementById(`region-${region.id}`);
+          const markerEl = document.getElementById(`marker-${region.id}`);
+          if (regionPath) {
+            regionPath.style.filter = 'url(#regionShadow)';
+            regionPath.style.strokeWidth = '2';
+          }
+          if (markerEl) {
+            markerEl.setAttribute('r', '8');
+          }
+        });
       }
     });
   });
 </script>
+
+<style>
+  .marker:hover {
+    transform: scale(1.2);
+  }
+  
+  .region-path:hover {
+    cursor: pointer;
+  }
+  
+  #region-info {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+</style>
